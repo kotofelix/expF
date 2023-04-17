@@ -12,6 +12,10 @@ public class FruitCatalogue {
         this.fruits = new ArrayList<>();
     }
 
+    public void addFruit(Fruit fruit) {
+        this.fruits.add(fruit);
+    }
+
     Fruit findFruit(String name) {
         for (Fruit fruit : this.fruits) {
             if (fruit.getName().equalsIgnoreCase(name)) {

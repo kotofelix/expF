@@ -22,17 +22,16 @@ public class Simulation {
     }
 
     public static void main(String[] args) {
-        List<String> fruitNames = Arrays.asList(args);
-        List<Fruit> fruits = new ArrayList<>();
         FruitBase fruitBase = new FruitBase();
-        for (String fruitName : fruitNames) {
+        FruitCatalogue fruitCatalogue = new FruitCatalogue();
+        for (String fruitName : args) {
             Fruit fruit = fruitBase.createFruit(fruitName);
             if (fruit != null) {
-                fruits.add(fruit);
+                fruitCatalogue.addFruit(fruit);
             }
         }
 
-        Cargo cargo = new Cargo(fruits);
+        Cargo cargo = new Cargo(fruitCatalogue.fruits);
 
         List<Customer> customers = new ArrayList<>();
         customers.add(new FreshCustomer("Fresh"));
