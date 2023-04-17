@@ -44,9 +44,9 @@ public class Cargo {
     public List<Fruit> takeFruits(List<Fruit> selectedFruits) {
         List<Fruit> purchasedFruits = new ArrayList<>();
         for (Fruit fruit : selectedFruits) {
-            if (fruits.contains(fruit)) {
-                purchasedFruits.add(fruit);
-                fruits.remove(fruit);
+            Fruit removedFruit = removeFruit(fruit);
+            if (removedFruit != null) {
+                purchasedFruits.add(removedFruit);
             }
         }
         return purchasedFruits;
