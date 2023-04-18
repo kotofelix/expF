@@ -4,7 +4,7 @@ import fruitBase.fruits.*;
 import fruitBase.fruits.Freshness;
 import fruitBase.fruits.Fruit;
 
-import java.math.BigDecimal;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -47,5 +47,31 @@ public class FruitBase {
 
     public List<Fruit> getAllFruits() {
         return fruits;
+    }
+
+    public void exportCatalogue(String s) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("fruitCatalogue.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(fruits);
+            out.close();
+            fileOut.close();
+            System.out.println("Каталог экспортирован.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void importCatalogue(String s) {
+        try {
+            FileInputStream fileIn = new FileInputStream("fruitCatalogue.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            fruits = (List<Fruit>) in.readObject();
+            in.close();
+            fileIn.close();
+            System.out.println("Каталог импортирован.");
+        } catch (IOException | ClassNotFoundException i) {
+            i.printStackTrace();
+        }
     }
 }

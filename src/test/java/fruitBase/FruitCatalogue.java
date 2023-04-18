@@ -2,10 +2,11 @@ package fruitBase;
 
 import fruitBase.fruits.Fruit;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FruitCatalogue {
+public class FruitCatalogue implements Serializable {
     protected List<Fruit> fruits;
 
     public FruitCatalogue() {
