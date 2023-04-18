@@ -49,7 +49,7 @@ public class FruitBase {
         return fruits;
     }
 
-    public void exportCatalogue(String s) {
+    public void exportCatalogue() {
         try {
             FileOutputStream fileOut = new FileOutputStream("fruitCatalogue.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -62,7 +62,7 @@ public class FruitBase {
         }
     }
 
-    public void importCatalogue(String s) {
+    public void importCatalogue() {
         try {
             FileInputStream fileIn = new FileInputStream("fruitCatalogue.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);

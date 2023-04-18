@@ -23,6 +23,26 @@ public class Simulation {
 
     public static void main(String[] args) {
         FruitBase fruitBase = new FruitBase();
+        boolean exportFlag = false;
+        boolean importFlag = false;
+
+        for (String arg : args) {
+            if (arg.equals("-e") || arg.equals("--export")) {
+                exportFlag = true;
+            } else if (arg.equals("-i") || arg.equals("--import")) {
+                importFlag = true;
+            }
+        }
+
+        if (exportFlag) {
+            fruitBase.exportCatalogue();
+            return;
+        }
+
+        if (importFlag) {
+            fruitBase.importCatalogue();
+            return;
+        }
         FruitCatalogue fruitCatalogue = new FruitCatalogue();
         for (String fruitName : args) {
             Fruit fruit = fruitBase.createFruit(fruitName);
